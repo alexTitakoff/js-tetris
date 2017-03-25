@@ -3,11 +3,6 @@ const context = canvas.getContext('2d');
 
 context.scale(20, 20);
 
-const matrix = [
-    [0, 1, 0],
-    [1, 1, 1],
-    [0, 0, 0],
-];
 
 function collide(arena, player) {
     const m = player.matrix;
@@ -32,6 +27,54 @@ function createMatrix(w, h) {
     return matrix;
 }
 
+
+function createPiece(type) {
+  if(type === 'T') {
+    return [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 0, 0],
+    ];
+  } else if (type === 'O') {
+    return [
+        [1, 1],
+        [1, 1],
+        ];
+  } else if (type === 'L') {
+    return [
+      [0, 1, 0],
+      [0, 1, 0],
+      [0, 1, 1],
+      ];
+  } else if (type === 'J') {
+    return [
+      [0, 1, 0],
+      [0, 1, 0],
+      [1, 1, 0],
+      ];
+  }  else if (type === 'I') {
+    return [
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      ];
+  } else if (type === 'S') {
+    return [
+      [0, 1, 1],
+      [1, 1, 0],
+      [0, 0, 0],
+      ];
+  } else if (type === 'Z') {
+    return [
+      [1, 1, 0],
+      [0, 1, 1],
+      [0, 0, 0],
+      ];
+  }
+
+}
+
 function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -50,7 +93,7 @@ const arena = createMatrix(12, 22);
 
 const player = {
     pos: {x: 5, y: 5},
-    matrix: matrix,
+    matrix: createPiece('T'),
 };
 
 function draw() {
@@ -76,7 +119,8 @@ function playerDrop() {
     if (collide(arena, player)) {
         player.pos.y--;
         merge(arena, player);
-        player.pos.y = 0;
+        playerReset();
+
     }
     dropCounter = 0;
 }
@@ -87,6 +131,15 @@ function playerMove(dir) {
 	if(collide(arena, player)) {
 		player.pos.x -= dir;
 	}
+}
+
+
+function playerReset() {
+  const pieces = 'ILJOTSZ';
+  player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
+  player.pos.y = 0;
+  player.pos.x = (arena[0].length / 2 | 0) -
+                  (player.matrix[0].length / 2 | 0);
 }
 
 function playerRotate(dir) {
