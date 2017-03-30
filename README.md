@@ -1,3 +1,1 @@
-
-ДЗ:
-1.Разобратьс с формировнием арены как матричного массива
+[Preview](https://alexitakov.github.io/js-tetris/.)
