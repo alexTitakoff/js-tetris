@@ -5,63 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
     <title>Tetris</title>
 </head>
 
-<style media="screen">
-
-body {
-  font-size: 28px;
-  cursor: pointer;
-  letter-spacing: 5px;
-  color: rgb(38, 38, 38);
-}
-  .start-butn {
-    background: rgb(230, 111, 133);
-    font-style: sans-serif;
-    color: #fff;
-    padding: 15px 25px;
-    width: 150px;
-    text-align: center;
-    font-size: 28px;
-    cursor: pointer;
-    letter-spacing: 5px;
-  }
-
-  .start-butn:hover {
-    background: rgb(219, 24, 60);
-  }
-
-  .game {
-  display: none;
-  width: 40%;  
-  }
-
-  .rules {
-    float: right;
-  }
-
-  #tetris {
-    float: left;
-  }
-</style>
 <body>
 
-    <div class="start-butn">
-start
-    </div>
+    <div class="start-butn">start</div>
 
     <div class="game">
-      <div class="rules">
-        Moving - down/left/right <br>
-        Rotate - q/w
-      </div>
-      <div id="score"></div>
-      <canvas id="tetris" width="240" height="440"></canvas>
+        <div class="rules">
+            Moving - down/left/right <br> Rotate - q/w
+        </div>
+        <div id="score"></div>
+        <canvas id="tetris" width="240" height="440"></canvas>
 
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="tetris.js"></script>
 </body>
 

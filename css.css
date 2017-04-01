@@ -1,0 +1,35 @@
+body {
+    font-size: 28px;
+    cursor: pointer;
+    letter-spacing: 5px;
+    color: rgb(38, 38, 38);
+}
+
+.start-butn {
+    background: rgb(230, 111, 133);
+    font-style: sans-serif;
+    color: #fff;
+    padding: 15px 25px;
+    width: 150px;
+    text-align: center;
+    font-size: 28px;
+    cursor: pointer;
+    letter-spacing: 5px;
+}
+
+.start-butn:hover {
+    background: rgb(219, 24, 60);
+}
+
+.game {
+    display: none;
+    width: 40%;
+}
+
+.rules {
+    float: right;
+}
+
+#tetris {
+    float: left;
+}
