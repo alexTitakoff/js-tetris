@@ -199,7 +199,7 @@ function startGame() {
     let offset = 1;
   	// проверка на столкновение со стеной при прокручивании элементов
   	while(collide(arena, player)) {
-  		player.pos.x = offset;
+  		//player.pos.x = offset;
   		offset = -(offset + (offset > 0 ? 1 : -1));
   		if(offset > player.matrix[0].length)  {
         rotate(player.matrix, -dir);
@@ -253,21 +253,48 @@ function startGame() {
       document.getElementById('score').innerText = player.score;
   }
 
+
+  var clearInput = setInterval(function() {
+    let input = document.getElementById('typing');
+    input.value = '';
+  }, 2000);
+
+  function typeKey() {
+    let input = document.getElementById('typing');
+    if(event.keyCode != 37 && event.keyCode != 39 && event.keyCode != 40 && event.keyCode != 38) {
+        console.log(keyboardMap[event.keyCode]);
+        input.value = input.value + keyboardMap[event.keyCode];
+    }
+
+
+
+    let leftWord = "CA";
+    let rightWord = "DO";
+    if (input.value == leftWord ) {
+      playerMove(-1);
+      input.value = '';
+    }else if(input.value == rightWord) {
+      playerMove(1);
+      input.value = '';
+    }
+  }
+
   document.addEventListener('keydown', event => {
+      typeKey();
+
       if (event.keyCode === 37) {
   				playerMove(-1);
-
       } else if (event.keyCode === 39) {
           playerMove(1);
       } else if (event.keyCode === 40) {
           playerDrop();
-      }else if (event.keyCode === 81) {
+      }else if (event.keyCode === 38) {
           playerRotate(-1);
-      }else if (event.keyCode === 87) {
-          playerRotate(1);
       }
 
   });
+
+
 
 
   playerReset();
