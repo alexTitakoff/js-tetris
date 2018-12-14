@@ -1,1 +1,1 @@
-[Preview](https://alexitakov.github.io/js-tetris/.)
+[Preview](https://alexTitakoff.github.io/js-tetris/.)
